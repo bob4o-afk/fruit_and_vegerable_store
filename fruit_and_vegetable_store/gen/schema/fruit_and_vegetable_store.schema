@@ -1,0 +1,37 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_STORE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "STORE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "STORE_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "STORE_CONTENT"
+                    }
+                ]
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}

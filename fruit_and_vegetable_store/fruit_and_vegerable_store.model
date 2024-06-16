@@ -1,0 +1,91 @@
+{
+    "model": {
+        "entities": [
+            {
+                "properties": [
+                    {
+                        "calculatedPropertyExpressionCreate": "",
+                        "calculatedPropertyExpressionUpdate": "",
+                        "dataAutoIncrement": "true",
+                        "dataLength": "0",
+                        "dataName": "STORE_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "dataUnique": "false",
+                        "isCalculatedProperty": "false",
+                        "isRequiredProperty": "false",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "calculatedPropertyExpressionCreate": "",
+                        "calculatedPropertyExpressionUpdate": "",
+                        "dataAutoIncrement": "false",
+                        "dataLength": "40",
+                        "dataName": "STORE_NAME",
+                        "dataNullable": "true",
+                        "dataPrecision": "NaN",
+                        "dataPrimaryKey": "false",
+                        "dataScale": "NaN",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "false",
+                        "isCalculatedProperty": "false",
+                        "isRequiredProperty": "false",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "40",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "calculatedPropertyExpressionCreate": "",
+                        "calculatedPropertyExpressionUpdate": "",
+                        "dataAutoIncrement": "false",
+                        "dataLength": "40",
+                        "dataName": "STORE_CONTENT",
+                        "dataNullable": "true",
+                        "dataPrecision": "NaN",
+                        "dataPrimaryKey": "false",
+                        "dataScale": "NaN",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "false",
+                        "isCalculatedProperty": "false",
+                        "isRequiredProperty": "false",
+                        "name": "Content",
+                        "widgetDropDownKey": "Name",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "40",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN"
+                    }
+                ],
+                "caption": "Manage entity Store",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}STORE\"",
+                "dataName": "STORE",
+                "dataQuery": "",
+                "disableGeneration": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "store",
+                "menuLabel": "Store",
+                "name": "Store",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveName": "entities",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "Store",
+                "tooltip": "Store",
+                "type": "PRIMARY"
+            }
+        ],
+        "perspectives": [],
+        "navigations": []
+    }
+}
