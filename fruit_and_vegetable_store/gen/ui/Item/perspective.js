@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: 'home',
-	name: 'Home',
-	link: '/services/web/fruit_and_vegetable_store/gen/index.html',
-	icon: '/services/web/resources/unicons/estate.svg',
-	order: 1,
+	id: 'Item',
+	name: 'Item',
+	link: '/services/web/fruit_and_vegetable_store/gen/ui/Item/index.html',
+	order: 300,
+	icon: '/services/web/resources/unicons/meh.svg',
 };
 
 if (typeof exports !== 'undefined') {

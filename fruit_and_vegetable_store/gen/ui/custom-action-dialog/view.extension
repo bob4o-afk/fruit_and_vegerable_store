@@ -1,5 +1,0 @@
-{
-    "module": "fruit_and_vegetable_store/gen/ui/custom-action-dialog/view.js",
-    "extensionPoint": "fruit_and_vegetable_store-dialog-window",
-    "description": "fruit_and_vegetable_store - Custom Action Dialog Window"
-}

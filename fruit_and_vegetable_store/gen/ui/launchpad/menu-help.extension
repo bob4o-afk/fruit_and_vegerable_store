@@ -1,1 +1,5 @@
-{"module":"fruit_and_vegetable_store/gen/ui/launchpad/menu-help.js","extensionPoint":"fruit_and_vegetable_store-menu","description":"fruit_and_vegetable_store - Application Menu"}
+{
+    "module": "fruit_and_vegetable_store/gen/ui/launchpad/menu-help.js",
+    "extensionPoint": "fruit_and_vegetable_store-menu",
+    "description": "fruit_and_vegetable_store - Application Menu"
+}

@@ -22,14 +22,174 @@
                         "name": "STORE_NAME"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 40,
+                        "type": "INTEGER",
+                        "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "STORE_CONTENT"
+                        "name": "STORE_PRODUCT"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 20,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "STORE_PRICE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "STORE_SUPPLIER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "STORE_AMOUNTINSHOP"
                     }
                 ]
+            },
+            {
+                "name": "CODBEX_PURCHASE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PURCHASE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASE_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "precision": "16",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASE_AMOUNTBOUGHT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "precision": "16",
+                        "scale": "2",
+                        "defaultValue": "0",
+                        "nullable": true,
+                        "name": "PURCHASE_DISCOUNTPERCENTAGE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": NaN,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "PURCHASE_MONEY_GIVEN"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASE_ITEM"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASE_CURRENCY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASE_CUSTOMER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASE_EMPLOYEE"
+                    },
+                    {
+                        "type": "DATE",
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "PURCHASE_DATE"
+                    }
+                ]
+            },
+            {
+                "name": "Item_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_STORE",
+                "constraintName": "Item_Product",
+                "columns": "STORE_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "Item_Supplier",
+                "type": "foreignKey",
+                "table": "CODBEX_STORE",
+                "constraintName": "Item_Supplier",
+                "columns": "STORE_SUPPLIER",
+                "referencedTable": "CODBEX_SUPPLIER",
+                "referencedColumns": "SUPPLIER_ID"
+            },
+            {
+                "name": "Purchase_Item",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASE",
+                "constraintName": "Purchase_Item",
+                "columns": "PURCHASE_ITEM",
+                "referencedTable": "CODBEX_STORE",
+                "referencedColumns": "STORE_ID"
+            },
+            {
+                "name": "Purchase_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASE",
+                "constraintName": "Purchase_Currency",
+                "columns": "PURCHASE_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "Purchase_Customer",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASE",
+                "constraintName": "Purchase_Customer",
+                "columns": "PURCHASE_CUSTOMER",
+                "referencedTable": "CODBEX_CUSTOMER",
+                "referencedColumns": "CUSTOMER_ID"
+            },
+            {
+                "name": "Purchase_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASE",
+                "constraintName": "Purchase_Employee",
+                "columns": "PURCHASE_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
             }
         ]
     },
