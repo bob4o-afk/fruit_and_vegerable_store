@@ -7,7 +7,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -16,22 +15,11 @@
                     {
                         "type": "VARCHAR",
                         "length": 40,
-                        "precision": "NaN",
-                        "scale": "NaN",
                         "nullable": true,
                         "name": "STORE_NAME"
                     },
                     {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "STORE_PRODUCT"
-                    },
-                    {
                         "type": "DECIMAL",
-                        "length": 20,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -39,19 +27,18 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
                         "nullable": true,
-                        "name": "STORE_SUPPLIER"
+                        "name": "STORE_PRODUCT"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
                         "nullable": true,
                         "name": "STORE_AMOUNTINSHOP"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "STORE_CURRENCY"
                     }
                 ]
             },
@@ -61,7 +48,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -75,22 +61,17 @@
                     },
                     {
                         "type": "INTEGER",
-                        "precision": "16",
-                        "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASE_AMOUNTBOUGHT"
                     },
                     {
                         "type": "INTEGER",
-                        "precision": "16",
-                        "scale": "2",
                         "defaultValue": "0",
                         "nullable": true,
                         "name": "PURCHASE_DISCOUNTPERCENTAGE"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": NaN,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -98,40 +79,26 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASE_ITEM"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASE_CURRENCY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASE_CUSTOMER"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASE_EMPLOYEE"
                     },
                     {
                         "type": "DATE",
-                        "precision": "16",
-                        "scale": "2",
                         "nullable": true,
                         "name": "PURCHASE_DATE"
                     }
@@ -147,13 +114,15 @@
                 "referencedColumns": "PRODUCT_ID"
             },
             {
-                "name": "Item_Supplier",
+                "name": "Item_Currency",
                 "type": "foreignKey",
                 "table": "CODBEX_STORE",
-                "constraintName": "Item_Supplier",
-                "columns": "STORE_SUPPLIER",
-                "referencedTable": "CODBEX_SUPPLIER",
-                "referencedColumns": "SUPPLIER_ID"
+                "constraintName": "Item_Currency",
+                "columns": "STORE_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
             },
             {
                 "name": "Purchase_Item",
@@ -170,6 +139,8 @@
                 "table": "CODBEX_PURCHASE",
                 "constraintName": "Purchase_Currency",
                 "columns": "PURCHASE_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_ID"
             },

@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'fruit_and_vegetable_store.Item.Item';
+		messageHubProvider.eventIdPrefix = 'fruit_and_vegetable_store.Purchase.Item';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -15,7 +15,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsProduct = params.optionsProduct;
-			$scope.optionsSupplier = params.optionsSupplier;
+			$scope.optionsCurrency = params.optionsCurrency;
 		}
 
 		$scope.filter = function () {
@@ -44,23 +44,22 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
-			if (entity.Product !== undefined) {
-				filter.$filter.equals.Product = entity.Product;
-			}
 			if (entity.Price !== undefined) {
 				filter.$filter.equals.Price = entity.Price;
 			}
-			if (entity.Supplier !== undefined) {
-				filter.$filter.equals.Supplier = entity.Supplier;
+			if (entity.Product !== undefined) {
+				filter.$filter.equals.Product = entity.Product;
 			}
 			if (entity.AmountInShop !== undefined) {
 				filter.$filter.equals.AmountInShop = entity.AmountInShop;
+			}
+			if (entity.Currency !== undefined) {
+				filter.$filter.equals.Currency = entity.Currency;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter
 			});
-			messageHub.postMessage("clearDetails");
 			$scope.cancel();
 		};
 

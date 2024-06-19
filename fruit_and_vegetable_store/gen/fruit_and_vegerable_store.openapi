@@ -1,18 +1,18 @@
 openapi: 3.0.3
 info:
-  title: fruit_and_vegerable_store - OpenAPI 3.0
+  title: fruit_and_vegetable_store - OpenAPI 3.0
   version: 1.0.0
-  description: basic fruit and vegerable store using depedancies
+  description: fruit and vegetable store
 externalDocs:
   description: Find out more about Eclipse Dirigible
   url: https://dirigible.io
 servers:
   - url: /services/ts
 tags:
-  - name: Item
+  - name: Purchase
   - name: Purchase
 paths:
-  /fruit_and_vegetable_store/gen/api/Item/ItemService.ts:
+  /fruit_and_vegetable_store/gen/api/Purchase/ItemService.ts:
     get:
       summary: List Item
       parameters:
@@ -33,7 +33,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Item
+        - Purchase
       responses:
         200:
           description: Successful Request
@@ -64,7 +64,7 @@ paths:
     post:
       summary: Create Item
       tags:
-        - Item
+        - Purchase
       requestBody:
         content:
           application/json:
@@ -96,7 +96,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /fruit_and_vegetable_store/gen/api/Item/ItemService.ts/{id}:
+  /fruit_and_vegetable_store/gen/api/Purchase/ItemService.ts/{id}:
     get:
       summary: Get Item by Id
       parameters:
@@ -107,7 +107,7 @@ paths:
           schema:
             type: string
       tags:
-        - Item
+        - Purchase
       responses:
         200:
           description: Successful Request
@@ -145,7 +145,7 @@ paths:
           schema:
             type: string
       tags:
-        - Item
+        - Purchase
       requestBody:
         content:
           application/json:
@@ -193,7 +193,7 @@ paths:
           schema:
             type: string
       tags:
-        - Item
+        - Purchase
       responses:
         204:
           description: Successful Request
@@ -215,11 +215,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /fruit_and_vegetable_store/gen/api/Item/ItemService.ts/count:
+  /fruit_and_vegetable_store/gen/api/Purchase/ItemService.ts/count:
     get:
       summary: Count the number of Item
       tags:
-        - Item
+        - Purchase
       responses:
         200:
           description: Successful Request
@@ -243,7 +243,7 @@ paths:
     post:
       summary: Count the number of Item by ItemFilterOptions
       tags:
-        - Item
+        - Purchase
       requestBody:
         content:
           application/json:
@@ -325,11 +325,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /fruit_and_vegetable_store/gen/api/Item/ItemService.ts/search:
+  /fruit_and_vegetable_store/gen/api/Purchase/ItemService.ts/search:
     post:
       summary: Search Item by ItemFilterOptions
       tags:
-        - Item
+        - Purchase
       requestBody:
         content:
           application/json:
@@ -825,16 +825,16 @@ components:
           type: string
           minLength: 0
           maxLength: 40
-        Product:
-          type: integer
-          format: int32
         Price:
           type: number
           format: double
-        Supplier:
+        Product:
           type: integer
           format: int32
         AmountInShop:
+          type: integer
+          format: int32
+        Currency:
           type: integer
           format: int32
     ItemFilterOptions:
@@ -865,14 +865,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Product:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Price:
                   oneOf:
                     - type: number
@@ -881,7 +873,7 @@ components:
                       items:
                         type: number
                         format: double
-                Supplier:
+                Product:
                   oneOf:
                     - type: integer
                       format: int32
@@ -890,6 +882,14 @@ components:
                         type: integer
                         format: int32
                 AmountInShop:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Currency:
                   oneOf:
                     - type: integer
                       format: int32
@@ -919,14 +919,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Product:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Price:
                   oneOf:
                     - type: number
@@ -935,7 +927,7 @@ components:
                       items:
                         type: number
                         format: double
-                Supplier:
+                Product:
                   oneOf:
                     - type: integer
                       format: int32
@@ -944,6 +936,14 @@ components:
                         type: integer
                         format: int32
                 AmountInShop:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Currency:
                   oneOf:
                     - type: integer
                       format: int32
@@ -959,10 +959,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Product:
                 Price:
-                Supplier:
+                Product:
                 AmountInShop:
+                Currency:
             greaterThan:
               type: object
               properties:
@@ -973,16 +973,16 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Product:
-                  type: integer
-                  format: int32
                 Price:
                   type: number
                   format: double
-                Supplier:
+                Product:
                   type: integer
                   format: int32
                 AmountInShop:
+                  type: integer
+                  format: int32
+                Currency:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -995,16 +995,16 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Product:
-                  type: integer
-                  format: int32
                 Price:
                   type: number
                   format: double
-                Supplier:
+                Product:
                   type: integer
                   format: int32
                 AmountInShop:
+                  type: integer
+                  format: int32
+                Currency:
                   type: integer
                   format: int32
             lessThan:
@@ -1017,16 +1017,16 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Product:
-                  type: integer
-                  format: int32
                 Price:
                   type: number
                   format: double
-                Supplier:
+                Product:
                   type: integer
                   format: int32
                 AmountInShop:
+                  type: integer
+                  format: int32
+                Currency:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -1039,26 +1039,26 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Product:
-                  type: integer
-                  format: int32
                 Price:
                   type: number
                   format: double
-                Supplier:
+                Product:
                   type: integer
                   format: int32
                 AmountInShop:
                   type: integer
                   format: int32
+                Currency:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Product", "Price", "Supplier", "AmountInShop"]
+          example: ["Id", "Name", "Price", "Product", "AmountInShop", "Currency"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Product,Price,Supplier,AmountInShop"
+            example: "Id,Name,Price,Product,AmountInShop,Currency"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -1092,6 +1092,7 @@ components:
         Item:
           type: integer
           format: int32
+          readOnly: true
         Currency:
           type: integer
           format: int32

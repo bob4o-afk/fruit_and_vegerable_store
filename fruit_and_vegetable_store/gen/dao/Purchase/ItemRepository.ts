@@ -6,18 +6,18 @@ import { dao as daoApi } from "sdk/db";
 export interface ItemEntity {
     readonly Id: number;
     Name?: string;
-    Product?: number;
     Price?: number;
-    Supplier?: number;
+    Product?: number;
     AmountInShop?: number;
+    Currency?: number;
 }
 
 export interface ItemCreateEntity {
     readonly Name?: string;
-    readonly Product?: number;
     readonly Price?: number;
-    readonly Supplier?: number;
+    readonly Product?: number;
     readonly AmountInShop?: number;
+    readonly Currency?: number;
 }
 
 export interface ItemUpdateEntity extends ItemCreateEntity {
@@ -29,58 +29,58 @@ export interface ItemEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Product?: number | number[];
             Price?: number | number[];
-            Supplier?: number | number[];
+            Product?: number | number[];
             AmountInShop?: number | number[];
+            Currency?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Product?: number | number[];
             Price?: number | number[];
-            Supplier?: number | number[];
+            Product?: number | number[];
             AmountInShop?: number | number[];
+            Currency?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
-            Product?: number;
             Price?: number;
-            Supplier?: number;
+            Product?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
-            Product?: number;
             Price?: number;
-            Supplier?: number;
+            Product?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Product?: number;
             Price?: number;
-            Supplier?: number;
+            Product?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
-            Product?: number;
             Price?: number;
-            Supplier?: number;
+            Product?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Product?: number;
             Price?: number;
-            Supplier?: number;
+            Product?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
     },
     $select?: (keyof ItemEntity)[],
@@ -123,23 +123,23 @@ export class ItemRepository {
                 type: "VARCHAR",
             },
             {
-                name: "Product",
-                column: "STORE_PRODUCT",
-                type: "INTEGER",
-            },
-            {
                 name: "Price",
                 column: "STORE_PRICE",
                 type: "DECIMAL",
             },
             {
-                name: "Supplier",
-                column: "STORE_SUPPLIER",
+                name: "Product",
+                column: "STORE_PRODUCT",
                 type: "INTEGER",
             },
             {
                 name: "AmountInShop",
                 column: "STORE_AMOUNTINSHOP",
+                type: "INTEGER",
+            },
+            {
+                name: "Currency",
+                column: "STORE_CURRENCY",
                 type: "INTEGER",
             }
         ]
@@ -238,7 +238,7 @@ export class ItemRepository {
     }
 
     private async triggerEvent(data: ItemEntityEvent | ItemUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("fruit_and_vegetable_store-Item-Item", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("fruit_and_vegetable_store-Purchase-Item", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -246,6 +246,6 @@ export class ItemRepository {
                 console.error(error);
             }            
         });
-        producer.topic("fruit_and_vegetable_store-Item-Item").send(JSON.stringify(data));
+        producer.topic("fruit_and_vegetable_store-Purchase-Item").send(JSON.stringify(data));
     }
 }

@@ -6,14 +6,12 @@
 const viewData = {
     id: "Item-details",
     label: "Item",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/fruit_and_vegetable_store/gen/ui/Item/Item/main-details/index.html",
-    perspectiveName: "Item",
+    link: "/services/web/fruit_and_vegetable_store/gen/ui/Purchase/${masterEntity}/Item/dialog-window/index.html",
+    perspectiveName: "Purchase",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
+    exports.getDialogWindow = function () {
         return viewData;
     }
 }

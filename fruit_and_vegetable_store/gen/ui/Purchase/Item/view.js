@@ -7,9 +7,9 @@ const viewData = {
     id: "Item",
     label: "Item",
     factory: "frame",
-    region: "left",
-    link: "/services/web/fruit_and_vegetable_store/gen/ui/Item/Item/index.html",
-    perspectiveName: "Item",
+    region: "bottom",
+    link: "/services/web/fruit_and_vegetable_store/gen/ui/Purchase/${masterEntity}/Item/index.html",
+    perspectiveName: "Purchase",
 };
 
 if (typeof exports !== 'undefined') {

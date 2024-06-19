@@ -22,7 +22,6 @@ export interface PurchaseCreateEntity {
     readonly AmountBought?: number;
     readonly DiscountPercentage?: number;
     readonly Price?: number;
-    readonly Item?: number;
     readonly Currency?: number;
     readonly Customer?: number;
     readonly Employee?: number;
@@ -223,6 +222,8 @@ export class PurchaseRepository {
 
     public create(entity: PurchaseCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
+        // @ts-ignore
+        (entity as PurchaseEntity).Item = Item["Price"]*Purchase["DiscountPercentage"]/100*Purchase["AmountBought"];
         if (entity.DiscountPercentage === undefined || entity.DiscountPercentage === null) {
             (entity as PurchaseEntity).DiscountPercentage = 0;
         }

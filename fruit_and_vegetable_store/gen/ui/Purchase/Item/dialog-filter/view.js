@@ -6,8 +6,8 @@
 const viewData = {
     id: "Item-filter",
     label: "Item Filter",
-    link: "/services/web/fruit_and_vegetable_store/gen/ui/Item/Item/dialog-filter/index.html",
-    perspectiveName: "Item",
+    link: "/services/web/fruit_and_vegetable_store/gen/ui/Purchase/${masterEntity}/Item/dialog-filter/index.html",
+    perspectiveName: "Purchase",
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ItemRepository, ItemEntityOptions } from "../../dao/Item/ItemRepository";
+import { ItemRepository, ItemEntityOptions } from "../../dao/Purchase/ItemRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("fruit_and_vegetable_store-Item-Item", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("fruit_and_vegetable_store-Purchase-Item", ["validate"]);
 
 @Controller
 class ItemService {
@@ -19,6 +19,17 @@ class ItemService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
+            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
+            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+
+            if (${masterEntityId} !== undefined) {
+                options.$filter = {
+                    equals: {
+                        ${masterEntityId}: ${masterEntityId}
+                    }
+                };
+            }
+
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
@@ -30,7 +41,7 @@ class ItemService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/fruit_and_vegetable_store/gen/api/Item/ItemService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/fruit_and_vegetable_store/gen/api/Purchase/ItemService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

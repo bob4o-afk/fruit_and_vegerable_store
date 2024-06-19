@@ -197,7 +197,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsEmployee = [];
 
 
-		$http.get("/services/ts/fruit_and_vegetable_store/gen/api/Item/ItemService.ts").then(function (response) {
+		$http.get("/services/ts/fruit_and_vegetable_store/gen/api/Purchase/ItemService.ts").then(function (response) {
 			$scope.optionsItem = response.data.map(e => {
 				return {
 					value: e.Id,
