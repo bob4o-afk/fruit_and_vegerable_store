@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("fruit_and_vegetable_store.Purchase.${masterEntity}.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("fruit_and_vegetable_store.Purchase.Purchase.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("fruit_and_vegetable_store.Purchase.${masterEntity}.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("fruit_and_vegetable_store.Purchase.Purchase.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
@@ -81,7 +81,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
-			let ${masterEntityId} = $scope.selectedMainEntityId;
+			let Purchase = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
@@ -95,7 +95,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (!filter.$filter.equals) {
 				filter.$filter.equals = {};
 			}
-			filter.$filter.equals.${masterEntityId} = ${masterEntityId};
+			filter.$filter.equals.Purchase = Purchase;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("Item", `Unable to count Item: '${response.message}'`);
@@ -127,6 +127,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				optionsProduct: $scope.optionsProduct,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsPurchase: $scope.optionsPurchase,
 			});
 		};
 
@@ -135,6 +136,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.filterEntity,
 				optionsProduct: $scope.optionsProduct,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsPurchase: $scope.optionsPurchase,
 			});
 		};
 
@@ -143,10 +145,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Item-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Purchase",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsProduct: $scope.optionsProduct,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsPurchase: $scope.optionsPurchase,
 			}, null, false);
 		};
 
@@ -154,10 +157,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Item-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Purchase",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsProduct: $scope.optionsProduct,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsPurchase: $scope.optionsPurchase,
 			}, null, false);
 		};
 
@@ -193,6 +197,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsProduct = [];
 		$scope.optionsCurrency = [];
+		$scope.optionsPurchase = [];
 
 
 		$http.get("/services/ts/codbex-products/gen/api/Products/ProductService.ts").then(function (response) {
@@ -213,6 +218,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/fruit_and_vegetable_store/gen/api/Purchase/PurchaseService.ts").then(function (response) {
+			$scope.optionsPurchase = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsProductValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsProduct.length; i++) {
 				if ($scope.optionsProduct[i].value === optionKey) {
@@ -225,6 +239,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {
 					return $scope.optionsCurrency[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsPurchaseValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsPurchase.length; i++) {
+				if ($scope.optionsPurchase[i].value === optionKey) {
+					return $scope.optionsPurchase[i].text;
 				}
 			}
 			return null;

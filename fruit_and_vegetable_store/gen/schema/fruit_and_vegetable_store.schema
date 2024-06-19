@@ -39,6 +39,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "STORE_CURRENCY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "STORE_PURCHASE"
                     }
                 ]
             },
@@ -76,11 +81,6 @@
                         "scale": "2",
                         "nullable": true,
                         "name": "PURCHASE_MONEY_GIVEN"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PURCHASE_ITEM"
                     },
                     {
                         "type": "INTEGER",
@@ -125,13 +125,13 @@
                 "referencedColumns": "CURRENCY_ID"
             },
             {
-                "name": "Purchase_Item",
+                "name": "Item_Purchase",
                 "type": "foreignKey",
-                "table": "CODBEX_PURCHASE",
-                "constraintName": "Purchase_Item",
-                "columns": "PURCHASE_ITEM",
-                "referencedTable": "CODBEX_STORE",
-                "referencedColumns": "STORE_ID"
+                "table": "CODBEX_STORE",
+                "constraintName": "Item_Purchase",
+                "columns": "STORE_PURCHASE",
+                "referencedTable": "CODBEX_PURCHASE",
+                "referencedColumns": "PURCHASE_ID"
             },
             {
                 "name": "Purchase_Currency",

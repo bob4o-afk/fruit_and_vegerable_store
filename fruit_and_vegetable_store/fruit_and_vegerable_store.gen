@@ -228,6 +228,35 @@
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
+        },
+        {
+          "dataName": "STORE_PURCHASE",
+          "dataNullable": true,
+          "dataType": "INTEGER",
+          "name": "Purchase",
+          "relationshipCardinality": "1_n",
+          "relationshipName": "Item_Purchase",
+          "relationshipType": "COMPOSITION",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
+          "widgetIsMajor": false,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "DROPDOWN",
+          "relationshipEntityName": "Purchase",
+          "relationshipEntityPerspectiveName": "Purchase",
+          "relationshipEntityPerspectiveLabel": "Entities",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Purchase",
+          "widgetDropdownUrl": "\"/services/ts/fruit_and_vegetable_store/gen/api/Purchase/PurchaseService.ts\"",
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity Store",
@@ -269,7 +298,9 @@
         "Id"
       ],
       "primaryKeysString": "Id",
-      "hasDropdowns": true
+      "hasDropdowns": true,
+      "masterEntity": "Purchase",
+      "masterEntityId": "Purchase"
     },
     {
       "properties": [
@@ -382,36 +413,6 @@
           "widgetLabel": "Price",
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
-          "dataTypeTypescript": "number",
-          "inputRule": ""
-        },
-        {
-          "calculatedPropertyExpressionCreate": "Item[\"Price\"]*Purchase[\"DiscountPercentage\"]/100*Purchase[\"AmountBought\"]",
-          "dataName": "PURCHASE_ITEM",
-          "dataNullable": true,
-          "dataType": "INTEGER",
-          "isCalculatedProperty": true,
-          "name": "Item",
-          "relationshipCardinality": "1_n",
-          "relationshipName": "Purchase_Item",
-          "relationshipType": "COMPOSITION",
-          "widgetDropDownKey": "Id",
-          "widgetDropDownValue": "Name",
-          "widgetIsMajor": false,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "DROPDOWN",
-          "relationshipEntityName": "Item",
-          "relationshipEntityPerspectiveName": "Purchase",
-          "relationshipEntityPerspectiveLabel": "Entities",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "widgetLabel": "Item",
-          "widgetDropdownUrl": "\"/services/ts/fruit_and_vegetable_store/gen/api/Purchase/ItemService.ts\"",
-          "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
         },
@@ -760,8 +761,6 @@
           }
         ]
       },
-      "masterEntity": "Item",
-      "masterEntityId": "Item",
       "hasDropdowns": true,
       "hasDates": true
     },

@@ -20,7 +20,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsItem = params.optionsItem;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsCustomer = params.optionsCustomer;
 			$scope.optionsEmployee = params.optionsEmployee;
@@ -60,9 +59,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Price !== undefined) {
 				filter.$filter.equals.Price = entity.Price;
-			}
-			if (entity.Item !== undefined) {
-				filter.$filter.equals.Item = entity.Item;
 			}
 			if (entity.Currency !== undefined) {
 				filter.$filter.equals.Currency = entity.Currency;

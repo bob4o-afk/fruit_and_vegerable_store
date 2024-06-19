@@ -10,7 +10,6 @@ export interface PurchaseEntity {
     AmountBought?: number;
     DiscountPercentage?: number;
     Price?: number;
-    Item?: number;
     Currency?: number;
     Customer?: number;
     Employee?: number;
@@ -40,7 +39,6 @@ export interface PurchaseEntityOptions {
             AmountBought?: number | number[];
             DiscountPercentage?: number | number[];
             Price?: number | number[];
-            Item?: number | number[];
             Currency?: number | number[];
             Customer?: number | number[];
             Employee?: number | number[];
@@ -52,7 +50,6 @@ export interface PurchaseEntityOptions {
             AmountBought?: number | number[];
             DiscountPercentage?: number | number[];
             Price?: number | number[];
-            Item?: number | number[];
             Currency?: number | number[];
             Customer?: number | number[];
             Employee?: number | number[];
@@ -64,7 +61,6 @@ export interface PurchaseEntityOptions {
             AmountBought?: number;
             DiscountPercentage?: number;
             Price?: number;
-            Item?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
@@ -76,7 +72,6 @@ export interface PurchaseEntityOptions {
             AmountBought?: number;
             DiscountPercentage?: number;
             Price?: number;
-            Item?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
@@ -88,7 +83,6 @@ export interface PurchaseEntityOptions {
             AmountBought?: number;
             DiscountPercentage?: number;
             Price?: number;
-            Item?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
@@ -100,7 +94,6 @@ export interface PurchaseEntityOptions {
             AmountBought?: number;
             DiscountPercentage?: number;
             Price?: number;
-            Item?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
@@ -112,7 +105,6 @@ export interface PurchaseEntityOptions {
             AmountBought?: number;
             DiscountPercentage?: number;
             Price?: number;
-            Item?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
@@ -174,11 +166,6 @@ export class PurchaseRepository {
                 type: "DECIMAL",
             },
             {
-                name: "Item",
-                column: "PURCHASE_ITEM",
-                type: "INTEGER",
-            },
-            {
                 name: "Currency",
                 column: "PURCHASE_CURRENCY",
                 type: "INTEGER",
@@ -222,8 +209,6 @@ export class PurchaseRepository {
 
     public create(entity: PurchaseCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
-        // @ts-ignore
-        (entity as PurchaseEntity).Item = Item["Price"]*Purchase["DiscountPercentage"]/100*Purchase["AmountBought"];
         if (entity.DiscountPercentage === undefined || entity.DiscountPercentage === null) {
             (entity as PurchaseEntity).DiscountPercentage = 0;
         }

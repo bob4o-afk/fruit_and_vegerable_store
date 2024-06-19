@@ -10,6 +10,7 @@ export interface ItemEntity {
     Product?: number;
     AmountInShop?: number;
     Currency?: number;
+    Purchase?: number;
 }
 
 export interface ItemCreateEntity {
@@ -18,6 +19,7 @@ export interface ItemCreateEntity {
     readonly Product?: number;
     readonly AmountInShop?: number;
     readonly Currency?: number;
+    readonly Purchase?: number;
 }
 
 export interface ItemUpdateEntity extends ItemCreateEntity {
@@ -33,6 +35,7 @@ export interface ItemEntityOptions {
             Product?: number | number[];
             AmountInShop?: number | number[];
             Currency?: number | number[];
+            Purchase?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -41,6 +44,7 @@ export interface ItemEntityOptions {
             Product?: number | number[];
             AmountInShop?: number | number[];
             Currency?: number | number[];
+            Purchase?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -49,6 +53,7 @@ export interface ItemEntityOptions {
             Product?: number;
             AmountInShop?: number;
             Currency?: number;
+            Purchase?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -57,6 +62,7 @@ export interface ItemEntityOptions {
             Product?: number;
             AmountInShop?: number;
             Currency?: number;
+            Purchase?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -65,6 +71,7 @@ export interface ItemEntityOptions {
             Product?: number;
             AmountInShop?: number;
             Currency?: number;
+            Purchase?: number;
         };
         lessThan?: {
             Id?: number;
@@ -73,6 +80,7 @@ export interface ItemEntityOptions {
             Product?: number;
             AmountInShop?: number;
             Currency?: number;
+            Purchase?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -81,6 +89,7 @@ export interface ItemEntityOptions {
             Product?: number;
             AmountInShop?: number;
             Currency?: number;
+            Purchase?: number;
         };
     },
     $select?: (keyof ItemEntity)[],
@@ -140,6 +149,11 @@ export class ItemRepository {
             {
                 name: "Currency",
                 column: "STORE_CURRENCY",
+                type: "INTEGER",
+            },
+            {
+                name: "Purchase",
+                column: "STORE_PURCHASE",
                 type: "INTEGER",
             }
         ]

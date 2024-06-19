@@ -1,5 +1,5 @@
 {
-    "module": "fruit_and_vegetable_store/gen/ui/Purchase//Item/dialog-filter/view.js",
+    "module": "fruit_and_vegetable_store/gen/ui/Purchase/Purchase/Item/dialog-filter/view.js",
     "extensionPoint": "fruit_and_vegetable_store-dialog-window",
     "description": "fruit_and_vegetable_store - Application Dialog Window"
 }

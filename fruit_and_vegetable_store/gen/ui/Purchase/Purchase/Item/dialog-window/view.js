@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Item-filter",
-    label: "Item Filter",
-    link: "/services/web/fruit_and_vegetable_store/gen/ui/Purchase/${masterEntity}/Item/dialog-filter/index.html",
+    id: "Item-details",
+    label: "Item",
+    link: "/services/web/fruit_and_vegetable_store/gen/ui/Purchase/Purchase/Item/dialog-window/index.html",
     perspectiveName: "Purchase",
 };
 

@@ -119,7 +119,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsItem: $scope.optionsItem,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsEmployee: $scope.optionsEmployee,
@@ -132,7 +131,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
-				optionsItem: $scope.optionsItem,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsEmployee: $scope.optionsEmployee,
@@ -143,7 +141,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsItem: $scope.optionsItem,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsEmployee: $scope.optionsEmployee,
@@ -183,7 +180,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Purchase-filter", {
 				entity: $scope.filterEntity,
-				optionsItem: $scope.optionsItem,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsEmployee: $scope.optionsEmployee,
@@ -191,20 +187,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsItem = [];
 		$scope.optionsCurrency = [];
 		$scope.optionsCustomer = [];
 		$scope.optionsEmployee = [];
 
-
-		$http.get("/services/ts/fruit_and_vegetable_store/gen/api/Purchase/ItemService.ts").then(function (response) {
-			$scope.optionsItem = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
 
 		$http.get("/services/ts/codbex-currencies/gen/api/Currencies/CurrencyService.ts").then(function (response) {
 			$scope.optionsCurrency = response.data.map(e => {
@@ -233,14 +219,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.optionsItemValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsItem.length; i++) {
-				if ($scope.optionsItem[i].value === optionKey) {
-					return $scope.optionsItem[i].text;
-				}
-			}
-			return null;
-		};
 		$scope.optionsCurrencyValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {

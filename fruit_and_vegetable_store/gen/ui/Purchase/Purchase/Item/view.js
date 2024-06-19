@@ -4,14 +4,16 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Item-details",
+    id: "Item",
     label: "Item",
-    link: "/services/web/fruit_and_vegetable_store/gen/ui/Purchase/${masterEntity}/Item/dialog-window/index.html",
+    factory: "frame",
+    region: "bottom",
+    link: "/services/web/fruit_and_vegetable_store/gen/ui/Purchase/Purchase/Item/index.html",
     perspectiveName: "Purchase",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

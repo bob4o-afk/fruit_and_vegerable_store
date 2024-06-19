@@ -19,13 +19,13 @@ class ItemService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+            let Purchase = parseInt(ctx.queryParameters.Purchase);
+            Purchase = isNaN(Purchase) ? ctx.queryParameters.Purchase : Purchase;
 
-            if (${masterEntityId} !== undefined) {
+            if (Purchase !== undefined) {
                 options.$filter = {
                     equals: {
-                        ${masterEntityId}: ${masterEntityId}
+                        Purchase: Purchase
                     }
                 };
             }

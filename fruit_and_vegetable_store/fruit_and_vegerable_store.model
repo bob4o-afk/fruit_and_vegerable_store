@@ -79,6 +79,24 @@
                         "relationshipEntityName": "Currency",
                         "relationshipEntityPerspectiveName": "Currencies",
                         "relationshipEntityPerspectiveLabel": "Currencies"
+                    },
+                    {
+                        "dataName": "STORE_PURCHASE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Purchase",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "Item_Purchase",
+                        "relationshipType": "COMPOSITION",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipEntityName": "Purchase",
+                        "relationshipEntityPerspectiveName": "Purchase",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Store",
@@ -161,26 +179,6 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "Item[\"Price\"]*Purchase[\"DiscountPercentage\"]/100*Purchase[\"AmountBought\"]",
-                        "dataName": "PURCHASE_ITEM",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "isCalculatedProperty": "true",
-                        "name": "Item",
-                        "relationshipCardinality": "1_n",
-                        "relationshipName": "Purchase_Item",
-                        "relationshipType": "COMPOSITION",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipEntityName": "Item",
-                        "relationshipEntityPerspectiveName": "Purchase",
-                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "PURCHASE_CURRENCY",
