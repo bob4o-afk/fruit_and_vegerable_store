@@ -1,0 +1,5 @@
+{
+    "module": "test/gen/test/ui/entities/Test/dialog-filter/view.js",
+    "extensionPoint": "test-dialog-window",
+    "description": "test - Application Dialog Window"
+}
