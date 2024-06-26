@@ -1,0 +1,5 @@
+{
+    "module": "new_version/gen/new_version/ui/launchpad/menu-help.js",
+    "extensionPoint": "new_version-menu",
+    "description": "new_version - Application Menu"
+}

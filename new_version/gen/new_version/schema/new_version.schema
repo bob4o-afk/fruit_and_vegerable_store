@@ -1,0 +1,75 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_NEWPURCHASE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "NEWPURCHASE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "NEWPURCHASE_NAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "NEWPURCHASE_PRICE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "NEWPURCHASE_CURRENCY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "NEWPURCHASE_CUSTOMER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "NEWPURCHASE_EMPLOYEE"
+                    }
+                ]
+            },
+            {
+                "name": "NewPurchase_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_NEWPURCHASE",
+                "constraintName": "NewPurchase_Currency",
+                "columns": "NEWPURCHASE_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "NewPurchase_Customer",
+                "type": "foreignKey",
+                "table": "CODBEX_NEWPURCHASE",
+                "constraintName": "NewPurchase_Customer",
+                "columns": "NEWPURCHASE_CUSTOMER",
+                "referencedTable": "CODBEX_CUSTOMER",
+                "referencedColumns": "CUSTOMER_ID"
+            },
+            {
+                "name": "NewPurchase_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_NEWPURCHASE",
+                "constraintName": "NewPurchase_Employee",
+                "columns": "NEWPURCHASE_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}
