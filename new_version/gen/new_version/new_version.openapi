@@ -1154,6 +1154,12 @@ components:
           type: string
           minLength: 0
           maxLength: 20
+        Price:
+          type: number
+          format: double
+        AmountInShop:
+          type: integer
+          format: int32
     NewItemFilterOptions:
       type: object
       properties:
@@ -1182,6 +1188,22 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                AmountInShop:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -1204,6 +1226,22 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                AmountInShop:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -1212,6 +1250,8 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Price:
+                AmountInShop:
             greaterThan:
               type: object
               properties:
@@ -1222,6 +1262,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Price:
+                  type: number
+                  format: double
+                AmountInShop:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -1232,6 +1278,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Price:
+                  type: number
+                  format: double
+                AmountInShop:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -1242,6 +1294,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Price:
+                  type: number
+                  format: double
+                AmountInShop:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -1252,14 +1310,20 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Price:
+                  type: number
+                  format: double
+                AmountInShop:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name"]
+          example: ["Id", "Name", "Price", "AmountInShop"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name"
+            example: "Id,Name,Price,AmountInShop"
         $order:
           type: string
           enum: ["asc", "desc"]

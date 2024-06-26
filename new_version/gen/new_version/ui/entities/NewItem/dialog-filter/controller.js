@@ -42,6 +42,12 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Price !== undefined) {
+				filter.$filter.equals.Price = entity.Price;
+			}
+			if (entity.AmountInShop !== undefined) {
+				filter.$filter.equals.AmountInShop = entity.AmountInShop;
+			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

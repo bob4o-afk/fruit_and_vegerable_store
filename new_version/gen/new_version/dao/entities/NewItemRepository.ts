@@ -6,10 +6,14 @@ import { dao as daoApi } from "sdk/db";
 export interface NewItemEntity {
     readonly Id: number;
     Name?: string;
+    Price?: number;
+    AmountInShop?: number;
 }
 
 export interface NewItemCreateEntity {
     readonly Name?: string;
+    readonly Price?: number;
+    readonly AmountInShop?: number;
 }
 
 export interface NewItemUpdateEntity extends NewItemCreateEntity {
@@ -21,30 +25,44 @@ export interface NewItemEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Price?: number | number[];
+            AmountInShop?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Price?: number | number[];
+            AmountInShop?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            Price?: number;
+            AmountInShop?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Price?: number;
+            AmountInShop?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Price?: number;
+            AmountInShop?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            Price?: number;
+            AmountInShop?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Price?: number;
+            AmountInShop?: number;
         };
     },
     $select?: (keyof NewItemEntity)[],
@@ -85,6 +103,16 @@ export class NewItemRepository {
                 name: "Name",
                 column: "NEWITEM_NAME",
                 type: "VARCHAR",
+            },
+            {
+                name: "Price",
+                column: "NEWITEM_PRICE",
+                type: "DECIMAL",
+            },
+            {
+                name: "AmountInShop",
+                column: "NEWITEM_AMOUNTINSHOP",
+                type: "INTEGER",
             }
         ]
     };
