@@ -9,6 +9,8 @@ export interface NewItemEntity {
     Price?: number;
     AmountInShop?: number;
     Currency?: number;
+    Product?: number;
+    NewPurchase?: number;
 }
 
 export interface NewItemCreateEntity {
@@ -16,6 +18,8 @@ export interface NewItemCreateEntity {
     readonly Price?: number;
     readonly AmountInShop?: number;
     readonly Currency?: number;
+    readonly Product?: number;
+    readonly NewPurchase?: number;
 }
 
 export interface NewItemUpdateEntity extends NewItemCreateEntity {
@@ -30,6 +34,8 @@ export interface NewItemEntityOptions {
             Price?: number | number[];
             AmountInShop?: number | number[];
             Currency?: number | number[];
+            Product?: number | number[];
+            NewPurchase?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -37,6 +43,8 @@ export interface NewItemEntityOptions {
             Price?: number | number[];
             AmountInShop?: number | number[];
             Currency?: number | number[];
+            Product?: number | number[];
+            NewPurchase?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -44,6 +52,8 @@ export interface NewItemEntityOptions {
             Price?: number;
             AmountInShop?: number;
             Currency?: number;
+            Product?: number;
+            NewPurchase?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -51,6 +61,8 @@ export interface NewItemEntityOptions {
             Price?: number;
             AmountInShop?: number;
             Currency?: number;
+            Product?: number;
+            NewPurchase?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -58,6 +70,8 @@ export interface NewItemEntityOptions {
             Price?: number;
             AmountInShop?: number;
             Currency?: number;
+            Product?: number;
+            NewPurchase?: number;
         };
         lessThan?: {
             Id?: number;
@@ -65,6 +79,8 @@ export interface NewItemEntityOptions {
             Price?: number;
             AmountInShop?: number;
             Currency?: number;
+            Product?: number;
+            NewPurchase?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -72,6 +88,8 @@ export interface NewItemEntityOptions {
             Price?: number;
             AmountInShop?: number;
             Currency?: number;
+            Product?: number;
+            NewPurchase?: number;
         };
     },
     $select?: (keyof NewItemEntity)[],
@@ -126,6 +144,16 @@ export class NewItemRepository {
             {
                 name: "Currency",
                 column: "NEWITEM_CURRENCY",
+                type: "INTEGER",
+            },
+            {
+                name: "Product",
+                column: "NEWITEM_PRODUCT",
+                type: "INTEGER",
+            },
+            {
+                name: "NewPurchase",
+                column: "NEWITEM_NEWPURCHASE",
                 type: "INTEGER",
             }
         ]
@@ -224,7 +252,7 @@ export class NewItemRepository {
     }
 
     private async triggerEvent(data: NewItemEntityEvent | NewItemUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("new_version-entities-NewItem", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("new_version-NewPurchase-NewItem", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -232,6 +260,6 @@ export class NewItemRepository {
                 console.error(error);
             }            
         });
-        producer.topic("new_version-entities-NewItem").send(JSON.stringify(data));
+        producer.topic("new_version-NewPurchase-NewItem").send(JSON.stringify(data));
     }
 }

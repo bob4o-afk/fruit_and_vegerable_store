@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { NewItemRepository, NewItemEntityOptions } from "../../dao/entities/NewItemRepository";
+import { NewItemRepository, NewItemEntityOptions } from "../../dao/NewPurchase/NewItemRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("new_version-entities-NewItem", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("new_version-NewPurchase-NewItem", ["validate"]);
 
 @Controller
 class NewItemService {
@@ -30,7 +30,7 @@ class NewItemService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/new_version/gen/new_version/api/entities/NewItemService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/new_version/gen/new_version/api/NewPurchase/NewItemService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

@@ -10,7 +10,7 @@ servers:
   - url: /services/ts
 tags:
   - name: NewPurchase
-  - name: entities
+  - name: NewPurchase
 paths:
   /new_version/gen/new_version/api/NewPurchase/NewPurchaseService.ts:
     get:
@@ -412,7 +412,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /new_version/gen/new_version/api/entities/NewItemService.ts:
+  /new_version/gen/new_version/api/NewPurchase/NewItemService.ts:
     get:
       summary: List NewItem
       parameters:
@@ -433,7 +433,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - NewPurchase
       responses:
         200:
           description: Successful Request
@@ -464,7 +464,7 @@ paths:
     post:
       summary: Create NewItem
       tags:
-        - entities
+        - NewPurchase
       requestBody:
         content:
           application/json:
@@ -496,7 +496,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /new_version/gen/new_version/api/entities/NewItemService.ts/{id}:
+  /new_version/gen/new_version/api/NewPurchase/NewItemService.ts/{id}:
     get:
       summary: Get NewItem by Id
       parameters:
@@ -507,7 +507,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - NewPurchase
       responses:
         200:
           description: Successful Request
@@ -545,7 +545,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - NewPurchase
       requestBody:
         content:
           application/json:
@@ -593,7 +593,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - NewPurchase
       responses:
         204:
           description: Successful Request
@@ -615,11 +615,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /new_version/gen/new_version/api/entities/NewItemService.ts/count:
+  /new_version/gen/new_version/api/NewPurchase/NewItemService.ts/count:
     get:
       summary: Count the number of NewItem
       tags:
-        - entities
+        - NewPurchase
       responses:
         200:
           description: Successful Request
@@ -643,7 +643,7 @@ paths:
     post:
       summary: Count the number of NewItem by NewItemFilterOptions
       tags:
-        - entities
+        - NewPurchase
       requestBody:
         content:
           application/json:
@@ -725,11 +725,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /new_version/gen/new_version/api/entities/NewItemService.ts/search:
+  /new_version/gen/new_version/api/NewPurchase/NewItemService.ts/search:
     post:
       summary: Search NewItem by NewItemFilterOptions
       tags:
-        - entities
+        - NewPurchase
       requestBody:
         content:
           application/json:
@@ -1163,6 +1163,12 @@ components:
         Currency:
           type: integer
           format: int32
+        Product:
+          type: integer
+          format: int32
+        NewPurchase:
+          type: integer
+          format: int32
     NewItemFilterOptions:
       type: object
       properties:
@@ -1208,6 +1214,22 @@ components:
                         type: integer
                         format: int32
                 Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Product:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                NewPurchase:
                   oneOf:
                     - type: integer
                       format: int32
@@ -1261,6 +1283,22 @@ components:
                       items:
                         type: integer
                         format: int32
+                Product:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                NewPurchase:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -1272,6 +1310,8 @@ components:
                 Price:
                 AmountInShop:
                 Currency:
+                Product:
+                NewPurchase:
             greaterThan:
               type: object
               properties:
@@ -1289,6 +1329,12 @@ components:
                   type: integer
                   format: int32
                 Currency:
+                  type: integer
+                  format: int32
+                Product:
+                  type: integer
+                  format: int32
+                NewPurchase:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -1310,6 +1356,12 @@ components:
                 Currency:
                   type: integer
                   format: int32
+                Product:
+                  type: integer
+                  format: int32
+                NewPurchase:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -1327,6 +1379,12 @@ components:
                   type: integer
                   format: int32
                 Currency:
+                  type: integer
+                  format: int32
+                Product:
+                  type: integer
+                  format: int32
+                NewPurchase:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -1348,14 +1406,20 @@ components:
                 Currency:
                   type: integer
                   format: int32
+                Product:
+                  type: integer
+                  format: int32
+                NewPurchase:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Price", "AmountInShop", "Currency"]
+          example: ["Id", "Name", "Price", "AmountInShop", "Currency", "Product", "NewPurchase"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Price,AmountInShop,Currency"
+            example: "Id,Name,Price,AmountInShop,Currency,Product,NewPurchase"
         $order:
           type: string
           enum: ["asc", "desc"]

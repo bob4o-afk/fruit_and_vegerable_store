@@ -90,6 +90,16 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "NEWITEM_CURRENCY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "NEWITEM_PRODUCT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "NEWITEM_NEWPURCHASE"
                     }
                 ]
             },
@@ -128,6 +138,24 @@
                 "columns": "NEWITEM_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "NewItem_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_NEWITEM",
+                "constraintName": "NewItem_Product",
+                "columns": "NEWITEM_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "NewItem_NewPurchase",
+                "type": "foreignKey",
+                "table": "CODBEX_NEWITEM",
+                "constraintName": "NewItem_NewPurchase",
+                "columns": "NEWITEM_NEWPURCHASE",
+                "referencedTable": "CODBEX_NEWPURCHASE",
+                "referencedColumns": "NEWPURCHASE_ID"
             }
         ]
     },
