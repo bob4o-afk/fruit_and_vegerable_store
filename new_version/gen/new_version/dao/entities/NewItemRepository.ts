@@ -5,9 +5,11 @@ import { dao as daoApi } from "sdk/db";
 
 export interface NewItemEntity {
     readonly Id: number;
+    Name?: string;
 }
 
 export interface NewItemCreateEntity {
+    readonly Name?: string;
 }
 
 export interface NewItemUpdateEntity extends NewItemCreateEntity {
@@ -18,24 +20,31 @@ export interface NewItemEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            Name?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
+            Name?: string | string[];
         };
         contains?: {
             Id?: number;
+            Name?: string;
         };
         greaterThan?: {
             Id?: number;
+            Name?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
+            Name?: string;
         };
         lessThan?: {
             Id?: number;
+            Name?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
+            Name?: string;
         };
     },
     $select?: (keyof NewItemEntity)[],
@@ -71,6 +80,11 @@ export class NewItemRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
+            },
+            {
+                name: "Name",
+                column: "NEWITEM_NAME",
+                type: "VARCHAR",
             }
         ]
     };

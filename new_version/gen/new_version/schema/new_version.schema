@@ -67,6 +67,12 @@
                         "identity": true,
                         "nullable": true,
                         "name": "NEWITEM_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "NEWITEM_NAME"
                     }
                 ]
             },

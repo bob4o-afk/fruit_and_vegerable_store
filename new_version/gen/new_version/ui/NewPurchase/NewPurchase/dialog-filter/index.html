@@ -50,57 +50,42 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idAmountBought" dg-colon="true">AmountBought</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['AmountBought'].$valid }}">
-	                            <fd-input id="idAmountBought"
-	                                name="AmountBought"
-	                                state="{{ forms.details['AmountBought'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.AmountBought"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter AmountBought">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idAmountBought"
+								name="AmountBought"
+								state="{{ forms.details['AmountBought'].$valid ? '' : 'error' }}"
+								ng-model="entity.AmountBought"
+								placeholder="Enter AmountBought"
+								>
+							</fd-step-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idPrice" dg-colon="true">Price</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Price'].$valid }}">
-	                            <fd-input id="idPrice"
-	                                name="Price"
-	                                state="{{ forms.details['Price'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Price"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter Price">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idPrice"
+								name="Price"
+								state="{{ forms.details['Price'].$valid ? '' : 'error' }}"
+								ng-model="entity.Price"
+								placeholder="Enter Price"
+								>
+							</fd-step-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idDiscountPercentage" dg-colon="true">DiscountPercentage</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['DiscountPercentage'].$valid }}">
-	                            <fd-input id="idDiscountPercentage"
-	                                name="DiscountPercentage"
-	                                state="{{ forms.details['DiscountPercentage'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.DiscountPercentage"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter DiscountPercentage">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idDiscountPercentage"
+								name="DiscountPercentage"
+								state="{{ forms.details['DiscountPercentage'].$valid ? '' : 'error' }}"
+								ng-model="entity.DiscountPercentage"
+								placeholder="Enter DiscountPercentage"
+								>
+							</fd-step-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -147,18 +132,29 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idDate" dg-colon="true">Date</fd-form-label>
+                        	<fd-form-label for="idDateFrom" dg-colon="true">From Date</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--8">
+                        <div class="fd-col fd-col-md--2">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Date'].$valid }}">
-	                            <fd-input id="idDate"
+	                            <fd-input id="idDateFrom"
 	                                name="Date"
 	                                state="{{ forms.details['Date'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Date"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter Date">
+	                                ng-model="entity.DateFrom"
+	                                type="date">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idDateTo" dg-colon="true">To Date</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--2">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Date'].$valid }}">
+	                            <fd-input id="idDateTo"
+	                                name="Date"
+	                                state="{{ forms.details['Date'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.DateTo"
+	                                type="date">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
