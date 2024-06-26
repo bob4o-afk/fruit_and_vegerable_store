@@ -620,6 +620,22 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "NEWITEM_CURRENCY",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Currency",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Code",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "NewItem_Currency",
+                        "relationshipEntityName": "Currency",
+                        "relationshipEntityPerspectiveName": "Currencies",
+                        "relationshipEntityPerspectiveLabel": "Currencies"
                     }
                 ],
                 "caption": "Manage entity NewItem",

@@ -8,12 +8,14 @@ export interface NewItemEntity {
     Name?: string;
     Price?: number;
     AmountInShop?: number;
+    Currency?: number;
 }
 
 export interface NewItemCreateEntity {
     readonly Name?: string;
     readonly Price?: number;
     readonly AmountInShop?: number;
+    readonly Currency?: number;
 }
 
 export interface NewItemUpdateEntity extends NewItemCreateEntity {
@@ -27,42 +29,49 @@ export interface NewItemEntityOptions {
             Name?: string | string[];
             Price?: number | number[];
             AmountInShop?: number | number[];
+            Currency?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             Price?: number | number[];
             AmountInShop?: number | number[];
+            Currency?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             Price?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             Price?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             Price?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             Price?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             Price?: number;
             AmountInShop?: number;
+            Currency?: number;
         };
     },
     $select?: (keyof NewItemEntity)[],
@@ -112,6 +121,11 @@ export class NewItemRepository {
             {
                 name: "AmountInShop",
                 column: "NEWITEM_AMOUNTINSHOP",
+                type: "INTEGER",
+            },
+            {
+                name: "Currency",
+                column: "NEWITEM_CURRENCY",
                 type: "INTEGER",
             }
         ]

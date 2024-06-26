@@ -85,6 +85,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "NEWITEM_AMOUNTINSHOP"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "NEWITEM_CURRENCY"
                     }
                 ]
             },
@@ -114,6 +119,15 @@
                 "columns": "NEWPURCHASE_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "NewItem_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_NEWITEM",
+                "constraintName": "NewItem_Currency",
+                "columns": "NEWITEM_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
             }
         ]
     },

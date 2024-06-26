@@ -1157,6 +1157,33 @@
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
+        },
+        {
+          "dataName": "NEWITEM_CURRENCY",
+          "dataNullable": true,
+          "dataType": "INTEGER",
+          "name": "Currency",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Code",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "DROPDOWN",
+          "relationshipName": "NewItem_Currency",
+          "relationshipEntityName": "Currency",
+          "relationshipEntityPerspectiveName": "Currencies",
+          "relationshipEntityPerspectiveLabel": "Currencies",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Currency",
+          "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts",
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity NewItem",
@@ -1180,11 +1207,18 @@
       "tooltip": "NewItem",
       "type": "PRIMARY",
       "dataSource": "DefaultDB",
-      "referencedProjections": [],
+      "referencedProjections": [
+        {
+          "name": "Currency",
+          "project": "codbex-currencies",
+          "genFolderName": "codbex-currencies"
+        }
+      ],
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id"
+      "primaryKeysString": "Id",
+      "hasDropdowns": true
     }
   ]
 }

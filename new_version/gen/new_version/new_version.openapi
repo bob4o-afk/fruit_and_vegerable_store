@@ -1160,6 +1160,9 @@ components:
         AmountInShop:
           type: integer
           format: int32
+        Currency:
+          type: integer
+          format: int32
     NewItemFilterOptions:
       type: object
       properties:
@@ -1197,6 +1200,14 @@ components:
                         type: number
                         format: double
                 AmountInShop:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Currency:
                   oneOf:
                     - type: integer
                       format: int32
@@ -1242,6 +1253,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -1252,6 +1271,7 @@ components:
                   maxLength: 20
                 Price:
                 AmountInShop:
+                Currency:
             greaterThan:
               type: object
               properties:
@@ -1266,6 +1286,9 @@ components:
                   type: number
                   format: double
                 AmountInShop:
+                  type: integer
+                  format: int32
+                Currency:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -1284,6 +1307,9 @@ components:
                 AmountInShop:
                   type: integer
                   format: int32
+                Currency:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -1298,6 +1324,9 @@ components:
                   type: number
                   format: double
                 AmountInShop:
+                  type: integer
+                  format: int32
+                Currency:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -1316,14 +1345,17 @@ components:
                 AmountInShop:
                   type: integer
                   format: int32
+                Currency:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Price", "AmountInShop"]
+          example: ["Id", "Name", "Price", "AmountInShop", "Currency"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Price,AmountInShop"
+            example: "Id,Name,Price,AmountInShop,Currency"
         $order:
           type: string
           enum: ["asc", "desc"]
