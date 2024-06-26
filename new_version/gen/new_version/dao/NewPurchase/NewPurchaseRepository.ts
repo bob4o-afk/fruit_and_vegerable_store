@@ -2,22 +2,29 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+import { EntityUtils } from "../utils/EntityUtils";
 
 export interface NewPurchaseEntity {
     readonly Id: number;
     Name?: string;
+    AmountBought?: number;
     Price?: number;
+    DiscountPercentage?: number;
     Currency?: number;
     Customer?: number;
     Employee?: number;
+    Date?: Date;
 }
 
 export interface NewPurchaseCreateEntity {
     readonly Name?: string;
+    readonly AmountBought?: number;
     readonly Price?: number;
+    readonly DiscountPercentage?: number;
     readonly Currency?: number;
     readonly Customer?: number;
     readonly Employee?: number;
+    readonly Date?: Date;
 }
 
 export interface NewPurchaseUpdateEntity extends NewPurchaseCreateEntity {
@@ -29,58 +36,79 @@ export interface NewPurchaseEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            AmountBought?: number | number[];
             Price?: number | number[];
+            DiscountPercentage?: number | number[];
             Currency?: number | number[];
             Customer?: number | number[];
             Employee?: number | number[];
+            Date?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            AmountBought?: number | number[];
             Price?: number | number[];
+            DiscountPercentage?: number | number[];
             Currency?: number | number[];
             Customer?: number | number[];
             Employee?: number | number[];
+            Date?: Date | Date[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            AmountBought?: number;
             Price?: number;
+            DiscountPercentage?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
+            Date?: Date;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            AmountBought?: number;
             Price?: number;
+            DiscountPercentage?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
+            Date?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            AmountBought?: number;
             Price?: number;
+            DiscountPercentage?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
+            Date?: Date;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            AmountBought?: number;
             Price?: number;
+            DiscountPercentage?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
+            Date?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            AmountBought?: number;
             Price?: number;
+            DiscountPercentage?: number;
             Currency?: number;
             Customer?: number;
             Employee?: number;
+            Date?: Date;
         };
     },
     $select?: (keyof NewPurchaseEntity)[],
@@ -123,9 +151,19 @@ export class NewPurchaseRepository {
                 type: "VARCHAR",
             },
             {
+                name: "AmountBought",
+                column: "NEWPURCHASE_AMOUNTBOUGHT",
+                type: "INTEGER",
+            },
+            {
                 name: "Price",
                 column: "NEWPURCHASE_PRICE",
                 type: "DECIMAL",
+            },
+            {
+                name: "DiscountPercentage",
+                column: "NEWPURCHASE_DISCOUNTPERCENTAGE",
+                type: "INTEGER",
             },
             {
                 name: "Currency",
@@ -141,6 +179,11 @@ export class NewPurchaseRepository {
                 name: "Employee",
                 column: "NEWPURCHASE_EMPLOYEE",
                 type: "INTEGER",
+            },
+            {
+                name: "Date",
+                column: "NEWPURCHASE_DATE",
+                type: "DATE",
             }
         ]
     };
@@ -152,15 +195,20 @@ export class NewPurchaseRepository {
     }
 
     public findAll(options?: NewPurchaseEntityOptions): NewPurchaseEntity[] {
-        return this.dao.list(options);
+        return this.dao.list(options).map((e: NewPurchaseEntity) => {
+            EntityUtils.setDate(e, "Date");
+            return e;
+        });
     }
 
     public findById(id: number): NewPurchaseEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;
     }
 
     public create(entity: NewPurchaseCreateEntity): number {
+        EntityUtils.setLocalDate(entity, "Date");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -176,6 +224,7 @@ export class NewPurchaseRepository {
     }
 
     public update(entity: NewPurchaseUpdateEntity): void {
+        // EntityUtils.setLocalDate(entity, "Date");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

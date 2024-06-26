@@ -10,6 +10,7 @@ servers:
   - url: /services/ts
 tags:
   - name: NewPurchase
+  - name: entities
 paths:
   /new_version/gen/new_version/api/NewPurchase/NewPurchaseService.ts:
     get:
@@ -411,6 +412,390 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /new_version/gen/new_version/api/entities/NewItemService.ts:
+    get:
+      summary: List NewItem
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/NewItem'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create NewItem
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewItem'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewItem'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /new_version/gen/new_version/api/entities/NewItemService.ts/{id}:
+    get:
+      summary: Get NewItem by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/NewItem'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update NewItem by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewItem'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewItem'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete NewItem by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /new_version/gen/new_version/api/entities/NewItemService.ts/count:
+    get:
+      summary: Count the number of NewItem
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of NewItem by NewItemFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewItemFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /new_version/gen/new_version/api/entities/NewItemService.ts/search:
+    post:
+      summary: Search NewItem by NewItemFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewItemFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/NewItem'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     NewPurchase:
@@ -424,9 +809,15 @@ components:
           type: string
           minLength: 0
           maxLength: 20
+        AmountBought:
+          type: integer
+          format: int32
         Price:
           type: number
           format: double
+        DiscountPercentage:
+          type: integer
+          format: int32
         Currency:
           type: integer
           format: int32
@@ -436,6 +827,7 @@ components:
         Employee:
           type: integer
           format: int32
+        Date:
     NewPurchaseFilterOptions:
       type: object
       properties:
@@ -464,6 +856,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                AmountBought:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Price:
                   oneOf:
                     - type: number
@@ -472,6 +872,14 @@ components:
                       items:
                         type: number
                         format: double
+                DiscountPercentage:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Currency:
                   oneOf:
                     - type: integer
@@ -496,6 +904,8 @@ components:
                       items:
                         type: integer
                         format: int32
+                Date:
+                  oneOf:
             notEquals:
               type: object
               properties:
@@ -518,6 +928,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                AmountBought:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Price:
                   oneOf:
                     - type: number
@@ -526,6 +944,14 @@ components:
                       items:
                         type: number
                         format: double
+                DiscountPercentage:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Currency:
                   oneOf:
                     - type: integer
@@ -543,6 +969,192 @@ components:
                         type: integer
                         format: int32
                 Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Date:
+                  oneOf:
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                AmountBought:
+                Price:
+                DiscountPercentage:
+                Currency:
+                Customer:
+                Employee:
+                Date:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                AmountBought:
+                  type: integer
+                  format: int32
+                Price:
+                  type: number
+                  format: double
+                DiscountPercentage:
+                  type: integer
+                  format: int32
+                Currency:
+                  type: integer
+                  format: int32
+                Customer:
+                  type: integer
+                  format: int32
+                Employee:
+                  type: integer
+                  format: int32
+                Date:
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                AmountBought:
+                  type: integer
+                  format: int32
+                Price:
+                  type: number
+                  format: double
+                DiscountPercentage:
+                  type: integer
+                  format: int32
+                Currency:
+                  type: integer
+                  format: int32
+                Customer:
+                  type: integer
+                  format: int32
+                Employee:
+                  type: integer
+                  format: int32
+                Date:
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                AmountBought:
+                  type: integer
+                  format: int32
+                Price:
+                  type: number
+                  format: double
+                DiscountPercentage:
+                  type: integer
+                  format: int32
+                Currency:
+                  type: integer
+                  format: int32
+                Customer:
+                  type: integer
+                  format: int32
+                Employee:
+                  type: integer
+                  format: int32
+                Date:
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                AmountBought:
+                  type: integer
+                  format: int32
+                Price:
+                  type: number
+                  format: double
+                DiscountPercentage:
+                  type: integer
+                  format: int32
+                Currency:
+                  type: integer
+                  format: int32
+                Customer:
+                  type: integer
+                  format: int32
+                Employee:
+                  type: integer
+                  format: int32
+                Date:
+        $select:
+          type: array
+          example: ["Id", "Name", "AmountBought", "Price", "DiscountPercentage", "Currency", "Customer", "Employee", "Date"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,AmountBought,Price,DiscountPercentage,Currency,Customer,Employee,Date"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    NewItem:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+    NewItemFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
                   oneOf:
                     - type: integer
                       format: int32
@@ -554,34 +1166,10 @@ components:
               type: object
               properties:
                 Id:
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Price:
-                Currency:
-                Customer:
-                Employee:
             greaterThan:
               type: object
               properties:
                 Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Price:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                Customer:
-                  type: integer
-                  format: int32
-                Employee:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -590,42 +1178,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Price:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                Customer:
-                  type: integer
-                  format: int32
-                Employee:
-                  type: integer
-                  format: int32
             lessThan:
               type: object
               properties:
                 Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Price:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                Customer:
-                  type: integer
-                  format: int32
-                Employee:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -634,30 +1190,14 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Price:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                Customer:
-                  type: integer
-                  format: int32
-                Employee:
-                  type: integer
-                  format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Price", "Currency", "Customer", "Employee"]
+          example: ["Id"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Price,Currency,Customer,Employee"
+            example: "Id"
         $order:
           type: string
           enum: ["asc", "desc"]

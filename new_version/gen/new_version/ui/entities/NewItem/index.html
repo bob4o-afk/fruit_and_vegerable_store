@@ -28,14 +28,6 @@
 			<table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
-						<th fd-table-header-cell>Name</th>
-						<th fd-table-header-cell>AmountBought</th>
-						<th fd-table-header-cell>Price</th>
-						<th fd-table-header-cell>DiscountPercentage</th>
-						<th fd-table-header-cell>Currency</th>
-						<th fd-table-header-cell>Customer</th>
-						<th fd-table-header-cell>Employee</th>
-						<th fd-table-header-cell>Date</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -45,20 +37,6 @@
 					</tr>
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Name}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.AmountBought}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Price}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.DiscountPercentage}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsCurrencyValue(next.Currency)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsCustomerValue(next.Customer)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsEmployeeValue(next.Employee)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Date}}</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
 								<fd-popover-control>

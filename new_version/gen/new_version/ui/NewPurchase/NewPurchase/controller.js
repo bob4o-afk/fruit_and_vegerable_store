@@ -92,6 +92,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						messageHub.showAlertError("NewPurchase", `Unable to list/filter NewPurchase: '${response.message}'`);
 						return;
 					}
+
+					response.data.forEach(e => {
+						if (e.Date) {
+							e.Date = new Date(e.Date);
+						}
+					});
+
 					$scope.data = response.data;
 				});
 			});

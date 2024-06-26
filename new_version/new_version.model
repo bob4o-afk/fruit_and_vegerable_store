@@ -27,12 +27,32 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataName": "NEWPURCHASE_AMOUNTBOUGHT",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "AmountBought",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataName": "NEWPURCHASE_PRICE",
                         "dataNullable": "true",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
                         "name": "Price",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "NEWPURCHASE_DISCOUNTPERCENTAGE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "DiscountPercentage",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
@@ -85,6 +105,16 @@
                         "relationshipEntityName": "Employee",
                         "relationshipEntityPerspectiveName": "Employees",
                         "relationshipEntityPerspectiveLabel": "Employees"
+                    },
+                    {
+                        "dataName": "NEWPURCHASE_DATE",
+                        "dataNullable": "true",
+                        "dataType": "DATE",
+                        "name": "Date",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity NewPurchase",
@@ -543,6 +573,42 @@
                 "title": "Employee",
                 "tooltip": "Employee",
                 "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "NEWITEM_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity NewItem",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}NEWITEM\"",
+                "dataName": "NEWITEM",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "newitem",
+                "menuLabel": "NewItem",
+                "name": "NewItem",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "entities",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "NewItem",
+                "tooltip": "NewItem",
+                "type": "PRIMARY"
             }
         ],
         "perspectives": [

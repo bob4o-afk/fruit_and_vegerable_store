@@ -19,11 +19,21 @@
                         "name": "NEWPURCHASE_NAME"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "NEWPURCHASE_AMOUNTBOUGHT"
+                    },
+                    {
                         "type": "DECIMAL",
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
                         "name": "NEWPURCHASE_PRICE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "NEWPURCHASE_DISCOUNTPERCENTAGE"
                     },
                     {
                         "type": "INTEGER",
@@ -39,6 +49,24 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "NEWPURCHASE_EMPLOYEE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "NEWPURCHASE_DATE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_NEWITEM",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "NEWITEM_ID"
                     }
                 ]
             },
