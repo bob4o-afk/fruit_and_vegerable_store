@@ -1,5 +1,0 @@
-{
-    "module": "test/gen/test/ui/launchpad/menu-help.js",
-    "extensionPoint": "test-menu",
-    "description": "test - Application Menu"
-}
